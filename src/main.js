@@ -31,9 +31,14 @@ refs.formEl.addEventListener('submit', evt => {
           });
         }
       })
-      .catch(error => console.log(error))
+      .catch(error => {
+        iziToast.error({
+          message: 'Something went wrong. Please try again later.',
+          position: 'topRight',
+        })
+      })
       .finally(() => {
-        document.querySelector('.loader').remove();
+        document.querySelector('.loader').style.display = 'none';
       });
     refs.input.value = '';
   } else {
